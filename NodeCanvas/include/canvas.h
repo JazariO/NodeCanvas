@@ -23,6 +23,11 @@ public:
     RECT select_rect;
     int hovered_node;
     POINT cached_cursor_pos;
+    DWORD last_click_time;
+    POINT last_click_pos;
+    int last_clicked_thing;
+    static const DWORD DOUBLE_CLICK_TIME = 500; // milliseconds
+    static const int DOUBLE_CLICK_DISTANCE = 5; // pixels
 
     void Init();
     void Render(HDC hdc, App* app);
@@ -31,6 +36,7 @@ public:
     void AddNode(App* app, POINT pos);
     void AddEdge(App* app, int from_node, int from_port, int to_node);
     void AddStickyNote(App* app, POINT pos);
+    bool IsDoubleClick(POINT current_pos, DWORD current_time, int thing_index);
 
     // coordinate transformation methods
     POINT ScreenToCanvas(POINT screen_pos);

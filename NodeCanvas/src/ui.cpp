@@ -6,6 +6,106 @@ void UI::Init() {
     is_text_editing = false;
     popup_thing = -1;
     text_buffer[0] = '\0';
+
+    // Add these initializations
+    editing_thing = -1;
+    edit_control = nullptr;
+}
+
+void UI::StartTextEditing(int thing_index, App* app) {
+    if (thing_index < 0 || thing_index >= app->thing_count) return;
+    if (editing_thing != -1) EndTextEditing(app, false); // End any existing editing
+
+    Thing* thing = &app->things[thing_index];
+    if (thing->type != THING_NODE && thing->type != THING_STICKY_NOTE) return;
+
+    editing_thing = thing_index;
+
+    // Calculate edit control position and size
+    RECT edit_rect;
+    if (thing->type == THING_NODE) {
+        POINT screen_pos = app->canvas->CanvasToScreen(thing->data.node.pos);
+        edit_rect = {
+            screen_pos.x,
+            screen_pos.y,
+            screen_pos.x + (int)(100 * app->canvas->zoom),
+            screen_pos.y + (int)(50 * app->canvas->zoom)
+        };
+    }
+    else { // THING_STICKY_NOTE
+        POINT screen_pos = app->canvas->CanvasToScreen(thing->data.sticky_note.pos);
+        edit_rect = {
+            screen_pos.x,
+            screen_pos.y,
+            screen_pos.x + (int)(thing->data.sticky_note.size.cx * app->canvas->zoom),
+            screen_pos.y + (int)(thing->data.sticky_note.size.cy * app->canvas->zoom)
+        };
+    }
+
+    // Create edit control
+    edit_control = CreateWindowExW(
+        WS_EX_CLIENTEDGE,
+        L"EDIT",
+        L"",
+        WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL | ES_MULTILINE | ES_WANTRETURN,
+        edit_rect.left,
+        edit_rect.top,
+        edit_rect.right - edit_rect.left,
+        edit_rect.bottom - edit_rect.top,
+        app->hwnd,
+        nullptr,
+        GetModuleHandle(nullptr),
+        nullptr
+    );
+
+    if (edit_control) {
+        // Set current text
+        const char* current_text = (thing->type == THING_NODE) ?
+            thing->data.node.text : thing->data.sticky_note.text;
+
+        wchar_t wtext[MAX_TEXT_LENGTH];
+        MultiByteToWideChar(CP_UTF8, 0, current_text, -1, wtext, MAX_TEXT_LENGTH);
+        SetWindowTextW(edit_control, wtext);
+
+        // Focus and select all text
+        SetFocus(edit_control);
+        SendMessage(edit_control, EM_SETSEL, 0, -1);
+    }
+}
+
+void UI::EndTextEditing(App* app, bool save_changes) {
+    if (editing_thing == -1 || !edit_control) return;
+
+    if (save_changes && editing_thing < app->thing_count) {
+        // Get text from edit control
+        wchar_t wtext[MAX_TEXT_LENGTH];
+        GetWindowTextW(edit_control, wtext, MAX_TEXT_LENGTH);
+
+        // Convert to UTF-8
+        char utf8_text[MAX_TEXT_LENGTH];
+        WideCharToMultiByte(CP_UTF8, 0, wtext, -1, utf8_text, MAX_TEXT_LENGTH, nullptr, nullptr);
+
+        // Save to thing
+        Thing* thing = &app->things[editing_thing];
+        if (thing->type == THING_NODE) {
+            strcpy_s(thing->data.node.text, MAX_TEXT_LENGTH, utf8_text);
+        }
+        else if (thing->type == THING_STICKY_NOTE) {
+            strcpy_s(thing->data.sticky_note.text, MAX_TEXT_LENGTH, utf8_text);
+        }
+
+        app->unsaved_changes = true;
+    }
+
+    // Destroy edit control
+    if (edit_control) {
+        DestroyWindow(edit_control);
+        edit_control = nullptr;
+    }
+
+    editing_thing = -1;
+    SetFocus(app->hwnd); // Return focus to main window
+    InvalidateRect(app->hwnd, nullptr, TRUE);
 }
 
 void UI::Render(HDC hdc, App* app) {

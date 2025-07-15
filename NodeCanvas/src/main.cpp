@@ -44,165 +44,198 @@ void CreateMenuBar(HWND hwnd) {
     SetMenu(hwnd, hMenuBar);
 }
 
+void HandleCreate(HWND hwnd) {
+    CreateMenuBar(hwnd);
+}
+
+void HandleCommand(HWND hwnd, WPARAM wParam, LPARAM lParam) {
+    if (HIWORD(wParam) == EN_KILLFOCUS && (HWND)lParam == app.ui->edit_control) {
+        app.ui->EndTextEditing(&app, true);
+        return;
+    }
+
+    int wmId = LOWORD(wParam);
+    switch (wmId) {
+    case ID_FILE_NEW:
+        if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
+            app.SaveUndo();
+            for (int i = 1; i < app.thing_count; i++) {
+                app.things[i].is_active = false;
+            }
+            app.thing_count = 1;
+            app.fileio->has_file = false;
+            app.unsaved_changes = false;
+            InvalidateRect(hwnd, nullptr, FALSE);
+        }
+        break;
+    case ID_FILE_OPEN:
+        if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
+            app.fileio->Load(&app);
+        }
+        break;
+    case ID_FILE_SAVE:
+        app.fileio->Save(&app);
+        break;
+    case ID_FILE_SAVEAS:
+        app.fileio->has_file = false;
+        app.fileio->Save(&app);
+        break;
+    case ID_FILE_EXIT:
+        PostMessage(hwnd, WM_CLOSE, 0, 0);
+        break;
+    case ID_EDIT_UNDO:
+        app.Undo();
+        break;
+    case ID_EDIT_REDO:
+        app.Redo();
+        break;
+    case ID_EDIT_SELECTALL:
+        for (int i = 0; i < app.thing_count; i++) {
+            if (app.things[i].is_active &&
+                (app.things[i].type == THING_NODE || app.things[i].type == THING_STICKY_NOTE)) {
+                app.things[i].is_selected = true;
+            }
+        }
+        InvalidateRect(hwnd, nullptr, FALSE);
+        break;
+    case ID_VIEW_FOCUSALL:
+        app.canvas->FocusAll(&app);
+        break;
+    }
+}
+
+void HandleDestroy() {
+    for (int i = 0; i < MAX_UNDO; i++) {
+        delete[] app.undo_stack[i].things;
+    }
+    delete[] app.things;
+    delete app.fileio;
+    delete app.ui;
+    delete app.canvas;
+    PostQuitMessage(0);
+}
+
+void HandleClose(HWND hwnd) {
+    if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
+        DestroyWindow(hwnd);
+    }
+}
+
+void HandleSize(HWND hwnd) {
+    GetClientRect(hwnd, &app.canvas->bounds);
+    InvalidateRect(hwnd, nullptr, FALSE);
+}
+
+void HandlePaint(HWND hwnd) {
+    PAINTSTRUCT ps;
+    HDC hdc = BeginPaint(hwnd, &ps);
+    RECT client_rect;
+    GetClientRect(hwnd, &client_rect);
+
+    HDC mem_dc = CreateCompatibleDC(hdc);
+    HBITMAP mem_bitmap = CreateCompatibleBitmap(hdc, client_rect.right, client_rect.bottom);
+    HBITMAP old_bitmap = (HBITMAP)SelectObject(mem_dc, mem_bitmap);
+
+    HBRUSH bg_brush = CreateSolidBrush(RGB(255, 255, 255));
+    FillRect(mem_dc, &client_rect, bg_brush);
+    DeleteObject(bg_brush);
+
+    app.canvas->Render(mem_dc, &app);
+    app.ui->Render(mem_dc, &app);
+
+    BitBlt(hdc, 0, 0, client_rect.right, client_rect.bottom, mem_dc, 0, 0, SRCCOPY);
+
+    SelectObject(mem_dc, old_bitmap);
+    DeleteObject(mem_bitmap);
+    DeleteDC(mem_dc);
+    EndPaint(hwnd, &ps);
+}
+
+bool HandleKeyDown(HWND hwnd, WPARAM wParam) {
+    if (wParam == VK_ESCAPE && app.ui->IsTextEditing()) {
+        app.ui->EndTextEditing(&app, false);
+        return true;
+    }
+
+    if (wParam == VK_RETURN && app.ui->IsTextEditing() &&
+        !(GetKeyState(VK_SHIFT) & 0x8000)) {
+        app.ui->EndTextEditing(&app, true);
+        return true;
+    }
+
+    if (app.ui->IsTextEditing()) {
+        return false;
+    }
+
+    bool ctrl = (GetKeyState(VK_CONTROL) & 0x8000);
+    bool shift = (GetKeyState(VK_SHIFT) & 0x8000);
+
+    if (ctrl) {
+        switch (wParam) {
+        case 'N':
+            PostMessage(hwnd, WM_COMMAND, ID_FILE_NEW, 0);
+            return true;
+        case 'O':
+            PostMessage(hwnd, WM_COMMAND, ID_FILE_OPEN, 0);
+            return true;
+        case 'S':
+            PostMessage(hwnd, WM_COMMAND,
+                shift ? ID_FILE_SAVEAS : ID_FILE_SAVE, 0);
+            return true;
+        case 'Z':
+            PostMessage(hwnd, WM_COMMAND,
+                shift ? ID_EDIT_REDO : ID_EDIT_UNDO, 0);
+            return true;
+        case 'Y':
+            PostMessage(hwnd, WM_COMMAND, ID_EDIT_REDO, 0);
+            return true;
+        case 'A':
+            PostMessage(hwnd, WM_COMMAND, ID_EDIT_SELECTALL, 0);
+            return true;
+        }
+    }
+    else if (wParam == 'F') {
+        PostMessage(hwnd, WM_COMMAND, ID_VIEW_FOCUSALL, 0);
+        return true;
+    }
+
+    return app.canvas->HandleInput(WM_KEYDOWN, wParam, 0, &app);
+}
+
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
     case WM_CREATE:
-        CreateMenuBar(hwnd);
+        HandleCreate(hwnd);
         return 0;
 
-    case WM_COMMAND: {
-        int wmId = LOWORD(wParam);
-        switch (wmId) {
-        case ID_FILE_NEW:
-            if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
-                app.SaveUndo();
-                // Clear all things except canvas background
-                for (int i = 1; i < app.thing_count; i++) {
-                    app.things[i].is_active = false;
-                }
-                app.thing_count = 1; // Keep only canvas background
-                app.fileio->has_file = false;
-                app.unsaved_changes = false;
-                InvalidateRect(hwnd, nullptr, FALSE); // Don't erase background
-            }
-            break;
-        case ID_FILE_OPEN:
-            if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
-                app.fileio->Load(&app);
-            }
-            break;
-        case ID_FILE_SAVE:
-            app.fileio->Save(&app);
-            break;
-        case ID_FILE_SAVEAS:
-            app.fileio->has_file = false;
-            app.fileio->Save(&app);
-            break;
-        case ID_FILE_EXIT:
-            PostMessage(hwnd, WM_CLOSE, 0, 0);
-            break;
-        case ID_EDIT_UNDO:
-            app.Undo();
-            break;
-        case ID_EDIT_REDO:
-            app.Redo();
-            break;
-        case ID_EDIT_SELECTALL:
-            for (int i = 0; i < app.thing_count; i++) {
-                if (app.things[i].is_active &&
-                    (app.things[i].type == THING_NODE || app.things[i].type == THING_STICKY_NOTE)) {
-                    app.things[i].is_selected = true;
-                }
-            }
-            InvalidateRect(hwnd, nullptr, FALSE); // Don't erase background
-            break;
-        case ID_VIEW_FOCUSALL:
-            app.canvas->FocusAll(&app);
-            break;
-        }
+    case WM_COMMAND:
+        HandleCommand(hwnd, wParam, lParam);
         return 0;
-    }
 
     case WM_DESTROY:
-        for (int i = 0; i < MAX_UNDO; i++) {
-            delete[] app.undo_stack[i].things;
-        }
-        delete[] app.things;
-        delete app.fileio;
-        delete app.ui;
-        delete app.canvas;
-        PostQuitMessage(0);
+        HandleDestroy();
         return 0;
 
     case WM_CLOSE:
-        if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
-            DestroyWindow(hwnd);
-        }
+        HandleClose(hwnd);
         return 0;
 
     case WM_SIZE:
-        // Update canvas bounds when window is resized
-        GetClientRect(hwnd, &app.canvas->bounds);
-        InvalidateRect(hwnd, nullptr, FALSE); // Don't erase background
+        HandleSize(hwnd);
         return 0;
 
     case WM_ERASEBKGND:
-        // Prevent default background erasing to reduce flicker
         return 1;
 
-    case WM_PAINT: {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hwnd, &ps);
-        RECT client_rect;
-        GetClientRect(hwnd, &client_rect);
-
-        // Use double buffering to reduce flicker
-        HDC mem_dc = CreateCompatibleDC(hdc);
-        HBITMAP mem_bitmap = CreateCompatibleBitmap(hdc, client_rect.right, client_rect.bottom);
-        HBITMAP old_bitmap = (HBITMAP)SelectObject(mem_dc, mem_bitmap);
-
-        // Clear background manually since we're handling WM_ERASEBKGND
-        HBRUSH bg_brush = CreateSolidBrush(RGB(255, 255, 255));
-        FillRect(mem_dc, &client_rect, bg_brush);
-        DeleteObject(bg_brush);
-
-        // Render canvas and UI
-        app.canvas->Render(mem_dc, &app);
-        app.ui->Render(mem_dc, &app);
-
-        // Copy to screen
-        BitBlt(hdc, 0, 0, client_rect.right, client_rect.bottom, mem_dc, 0, 0, SRCCOPY);
-
-        // Clean up
-        SelectObject(mem_dc, old_bitmap);
-        DeleteObject(mem_bitmap);
-        DeleteDC(mem_dc);
-        EndPaint(hwnd, &ps);
+    case WM_PAINT:
+        HandlePaint(hwnd);
         return 0;
-    }
 
     case WM_KEYDOWN:
-        // Handle keyboard shortcuts
-        if (GetKeyState(VK_CONTROL) & 0x8000) {
-            switch (wParam) {
-            case 'N':
-                PostMessage(hwnd, WM_COMMAND, ID_FILE_NEW, 0);
-                return 0;
-            case 'O':
-                PostMessage(hwnd, WM_COMMAND, ID_FILE_OPEN, 0);
-                return 0;
-            case 'S':
-                if (GetKeyState(VK_SHIFT) & 0x8000) {
-                    PostMessage(hwnd, WM_COMMAND, ID_FILE_SAVEAS, 0);
-                }
-                else {
-                    PostMessage(hwnd, WM_COMMAND, ID_FILE_SAVE, 0);
-                }
-                return 0;
-            case 'Z':
-                PostMessage(hwnd, WM_COMMAND, ID_EDIT_UNDO, 0);
-                return 0;
-            case 'Y':
-                PostMessage(hwnd, WM_COMMAND, ID_EDIT_REDO, 0);
-                return 0;
-            case 'A':
-                PostMessage(hwnd, WM_COMMAND, ID_EDIT_SELECTALL, 0);
-                return 0;
-            }
-        }
-        else if (wParam == 'F') {
-            PostMessage(hwnd, WM_COMMAND, ID_VIEW_FOCUSALL, 0);
-            return 0;
-        }
-
-        // Handle other keyboard input through canvas
-        if (app.canvas->HandleInput(uMsg, wParam, lParam, &app)) {
-            return 0;
-        }
+        if (HandleKeyDown(hwnd, wParam)) return 0;
         break;
     }
 
-    // Handle all other input through canvas
     return app.canvas->HandleInput(uMsg, wParam, lParam, &app) ?
         0 : DefWindowProc(hwnd, uMsg, wParam, lParam);
 }

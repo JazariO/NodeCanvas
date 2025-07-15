@@ -20,6 +20,23 @@ void Canvas::Init() {
     select_rect = { 0, 0, 0, 0 };
     hovered_node = -1;
     cached_cursor_pos = { 0,0 };
+
+    // Double click field initializers
+    last_click_time = 0;
+    last_click_pos = { 0, 0 };
+    last_clicked_thing = -1;
+}
+
+bool Canvas::IsDoubleClick(POINT current_pos, DWORD current_time, int thing_index) {
+    if (thing_index != last_clicked_thing) return false;
+
+    DWORD time_diff = current_time - last_click_time;
+    if (time_diff > DOUBLE_CLICK_TIME) return false;
+
+    int dx = abs(current_pos.x - last_click_pos.x);
+    int dy = abs(current_pos.y - last_click_pos.y);
+
+    return (dx <= DOUBLE_CLICK_DISTANCE && dy <= DOUBLE_CLICK_DISTANCE);
 }
 
 POINT Canvas::ScreenToCanvas(POINT screen_pos) {
@@ -42,6 +59,7 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
         POINT cursor_pos = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
         POINT canvas_pos = ScreenToCanvas(cursor_pos);
         bool ctrl_pressed = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
+        DWORD current_time = GetTickCount();
 
         int clicked_thing = -1;
 
@@ -82,16 +100,24 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
         }
 
         if (clicked_thing != -1) {
+            // Check for double-click
+            if (IsDoubleClick(cursor_pos, current_time, clicked_thing)) {
+                // Start text editing
+                app->ui->StartTextEditing(clicked_thing, app);
+                return true;
+            }
+
+            // Update double-click tracking
+            last_click_time = current_time;
+            last_click_pos = cursor_pos;
+            last_clicked_thing = clicked_thing;
             app->SaveUndo();
 
-            // Handle selection logic
+            // Handle selection logic (existing code)
             if (ctrl_pressed) {
-                // Toggle selection of clicked item
                 app->things[clicked_thing].is_selected = !app->things[clicked_thing].is_selected;
             }
             else {
-                // If the clicked item is already selected and we have multiple selections,
-                // don't change selection yet (allow dragging of group)
                 bool item_already_selected = app->things[clicked_thing].is_selected;
                 int selected_count = 0;
                 for (int j = 0; j < app->thing_count; j++) {
@@ -99,7 +125,6 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
                 }
 
                 if (!item_already_selected || selected_count <= 1) {
-                    // Clear all selections and select only the clicked item
                     for (int j = 0; j < app->thing_count; j++) {
                         app->things[j].is_selected = false;
                     }
