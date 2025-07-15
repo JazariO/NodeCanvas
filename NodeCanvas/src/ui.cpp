@@ -4,19 +4,28 @@
 
 void UI::Init() {
     is_text_editing = false;
+    popup_thing = -1;
+    text_buffer[0] = '\0';
 }
 
 void UI::Render(HDC hdc, App* app) {
-    // Render the close button in the top-right corner
-    RECT client_rect;
-    GetClientRect(app->hwnd, &client_rect);
-    RECT close_button = { client_rect.right - 30, 10, client_rect.right - 10, 30 };
-    HBRUSH brush = CreateSolidBrush(RGB(255, 100, 100)); // Red close button
-    FillRect(hdc, &close_button, brush);
-    DeleteObject(brush);
-    SetBkColor(hdc, RGB(255, 100, 100));
-    SetTextColor(hdc, RGB(255, 255, 255));
-    DrawText(hdc, L"X", -1, &close_button, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+    for (int i = 0; i < app->thing_count; i++) {
+        if (!app->things[i].is_active || app->things[i].type != THING_POPUP_MENU) continue;
+        RECT rect = { app->things[i].data.popup_menu.pos.x, app->things[i].data.popup_menu.pos.y,
+                     app->things[i].data.popup_menu.pos.x + 100, app->things[i].data.popup_menu.pos.y + 90 };
+        HBRUSH brush = CreateSolidBrush(RGB(200, 200, 200));
+        FillRect(hdc, &rect, brush);
+        DeleteObject(brush);
+        SetBkColor(hdc, RGB(200, 200, 200));
+        SetTextColor(hdc, RGB(0, 0, 0));
+        RECT text_rect = rect;
+        text_rect.top += 10;
+        DrawText(hdc, L"Change Color", -1, &text_rect, DT_CENTER | DT_SINGLELINE);
+        text_rect.top += 30;
+        DrawText(hdc, L"Edit Text", -1, &text_rect, DT_CENTER | DT_SINGLELINE);
+        text_rect.top += 30;
+        DrawText(hdc, L"Clear Edges", -1, &text_rect, DT_CENTER | DT_SINGLELINE);
+    }
 }
 
 void UI::ShowContextMenu(POINT pos, App* app) {
@@ -25,27 +34,32 @@ void UI::ShowContextMenu(POINT pos, App* app) {
     AppendMenu(hMenu, MF_STRING, 2, L"Add Sticky Note");
     AppendMenu(hMenu, MF_STRING, 3, L"Save");
     AppendMenu(hMenu, MF_STRING, 4, L"Load");
-
-    // Convert client coordinates to screen coordinates
+    AppendMenu(hMenu, MF_STRING, 5, L"Undo");
+    AppendMenu(hMenu, MF_STRING, 6, L"Redo");
     ClientToScreen(app->hwnd, &pos);
-
-    // Show the context menu and handle selection
     int selection = TrackPopupMenu(hMenu, TPM_RETURNCMD | TPM_NONOTIFY, pos.x, pos.y, 0, app->hwnd, nullptr);
     switch (selection) {
-    case 1: // Add Node
-        app->canvas->AddNode(app, pos);
-        break;
-    case 2: // Add Sticky Note
-        app->canvas->AddStickyNote(app, pos);
-        break;
-    case 3: // Save
-        app->fileio->Save(app);
-        break;
-    case 4: // Load
-        if (app->fileio->PromptSaveUnsaved(app->hwnd, app)) {
-            app->fileio->Load(app);
-        }
-        break;
+    case 1: app->canvas->AddNode(app, app->canvas->cached_cursor_pos); break;  // Use cached position
+    case 2: app->canvas->AddStickyNote(app, app->canvas->cached_cursor_pos); break;  // Use cached position
+    case 3: app->fileio->Save(app); break;
+    case 4: if (app->fileio->PromptSaveUnsaved(app->hwnd, app)) app->fileio->Load(app); break;
+    case 5: app->Undo(); break;
+    case 6: app->Redo(); break;
     }
     DestroyMenu(hMenu);
+}
+
+void UI::ShowPopupMenu(POINT pos, int thing_index, App* app) {
+    if (app->thing_count >= MAX_THINGS || popup_thing != -1) return;
+    app->SaveUndo();
+    Thing* thing = &app->things[app->thing_count];
+    thing->type = THING_POPUP_MENU;
+    thing->is_active = true;
+    thing->is_selected = false;
+    thing->data.popup_menu.pos = pos;
+    thing->data.popup_menu.target_thing = thing_index;
+    popup_thing = app->thing_count;
+    app->thing_count++;
+    app->unsaved_changes = true;
+    InvalidateRect(app->hwnd, nullptr, TRUE);
 }

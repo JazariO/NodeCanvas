@@ -1,10 +1,9 @@
 #include "../include/app.h"
-#include <algorithm> // For std::min
+#include <algorithm>
 
 void App::Init(HWND hwnd) {
     this->hwnd = hwnd;
 
-    // Allocate memory for canvas, ui, fileio, and things
     canvas = new Canvas();
     ui = new UI();
     fileio = new FileIO();
@@ -19,19 +18,16 @@ void App::Init(HWND hwnd) {
     undo_count = 0;
     unsaved_changes = false;
 
-    // Initialize canvas background
     things[thing_count].type = THING_CANVAS_BACKGROUND;
     things[thing_count].is_active = true;
     thing_count++;
 
-    // Allocate memory for undo stack things
     for (int i = 0; i < MAX_UNDO; i++) {
         undo_stack[i].things = new Thing[MAX_THINGS];
     }
 }
 
 void App::Update() {
-    // Update logic for animation, if needed
     InvalidateRect(hwnd, nullptr, TRUE);
 }
 
@@ -42,4 +38,24 @@ void App::SaveUndo() {
     undo_index = (undo_index + 1) % MAX_UNDO;
     undo_count = (std::min)(undo_count + 1, MAX_UNDO);
     unsaved_changes = true;
+}
+
+void App::Undo() {
+    if (undo_count <= 0) return;
+    undo_index = (undo_index - 1 + MAX_UNDO) % MAX_UNDO;
+    undo_count--;
+    thing_count = undo_stack[undo_index].thing_count;
+    memcpy(things, undo_stack[undo_index].things, sizeof(Thing) * thing_count);
+    unsaved_changes = true;
+    InvalidateRect(hwnd, nullptr, TRUE);
+}
+
+void App::Redo() {
+    if (undo_index >= undo_count - 1) return;
+    undo_index = (undo_index + 1) % MAX_UNDO;
+    undo_count++;
+    thing_count = undo_stack[undo_index].thing_count;
+    memcpy(things, undo_stack[undo_index].things, sizeof(Thing) * thing_count);
+    unsaved_changes = true;
+    InvalidateRect(hwnd, nullptr, TRUE);
 }

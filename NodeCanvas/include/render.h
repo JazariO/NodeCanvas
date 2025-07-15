@@ -10,7 +10,7 @@ namespace NodeCanvasRender {
     void DrawCanvasBackground(HDC hdc, RECT bounds);
     void DrawNode(HDC hdc, Thing* thing, App* app);
     void DrawEdge(HDC hdc, Thing* thing, App* app);
-    void DrawStickyNote(HDC hdc, Thing* thing);
+    void DrawStickyNote(HDC hdc, Thing* thing, App* app);
 }
 
 #endif

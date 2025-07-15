@@ -18,9 +18,9 @@ bool FileIO::PromptSaveUnsaved(HWND hwnd, App* app) {
 }
 
 void FileIO::Save(App* app) {
-    wchar_t filename[MAX_PATH] = L""; // Changed to wchar_t
+    wchar_t filename[MAX_PATH] = L"";
     if (!has_file) {
-        OPENFILENAMEW ofn = { sizeof(OPENFILENAMEW) }; // Use OPENFILENAMEW for Unicode
+        OPENFILENAMEW ofn = { sizeof(OPENFILENAMEW) };
         ofn.hwndOwner = app->hwnd;
         ofn.lpstrFilter = L"NodeCanvas Files (*.nodec)\0*.nodec\0All Files (*.*)\0*.*\0";
         ofn.lpstrFile = filename;
@@ -28,9 +28,9 @@ void FileIO::Save(App* app) {
         ofn.lpstrDefExt = L"nodec";
         ofn.Flags = OFN_OVERWRITEPROMPT;
 
-        if (GetSaveFileNameW(&ofn)) { // Use GetSaveFileNameW
+        if (GetSaveFileNameW(&ofn)) {
             has_file = true;
-            wcscpy_s(current_file, MAX_PATH, filename); // Use wcscpy_s
+            wcscpy_s(current_file, MAX_PATH, filename);
         }
         else {
             return;
@@ -38,7 +38,7 @@ void FileIO::Save(App* app) {
     }
 
     FILE* file;
-    if (_wfopen_s(&file, current_file, L"wb") == 0) { // Use _wfopen_s for Unicode
+    if (_wfopen_s(&file, current_file, L"wb") == 0) {
         fwrite(&app->thing_count, sizeof(int), 1, file);
         fwrite(app->things, sizeof(Thing), app->thing_count, file);
         fclose(file);
@@ -47,17 +47,17 @@ void FileIO::Save(App* app) {
 }
 
 void FileIO::Load(App* app) {
-    wchar_t filename[MAX_PATH] = L""; // Changed to wchar_t
-    OPENFILENAMEW ofn = { sizeof(OPENFILENAMEW) }; // Use OPENFILENAMEW
+    wchar_t filename[MAX_PATH] = L"";
+    OPENFILENAMEW ofn = { sizeof(OPENFILENAMEW) };
     ofn.hwndOwner = app->hwnd;
     ofn.lpstrFilter = L"NodeCanvas Files (*.nodec)\0*.nodec\0All Files (*.*)\0*.*\0";
     ofn.lpstrFile = filename;
     ofn.nMaxFile = MAX_PATH;
     ofn.Flags = OFN_FILEMUSTEXIST;
 
-    if (GetOpenFileNameW(&ofn)) { // Use GetOpenFileNameW
+    if (GetOpenFileNameW(&ofn)) {
         FILE* file;
-        if (_wfopen_s(&file, filename, L"rb") == 0) { // Use _wfopen_s
+        if (_wfopen_s(&file, filename, L"rb") == 0) {
             app->SaveUndo();
             fread(&app->thing_count, sizeof(int), 1, file);
             if (app->thing_count <= MAX_THINGS) {
@@ -65,7 +65,7 @@ void FileIO::Load(App* app) {
             }
             fclose(file);
             has_file = true;
-            wcscpy_s(current_file, MAX_PATH, filename); // Use wcscpy_s
+            wcscpy_s(current_file, MAX_PATH, filename);
             app->unsaved_changes = false;
             InvalidateRect(app->hwnd, nullptr, TRUE);
         }

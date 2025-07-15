@@ -1,3 +1,4 @@
+
 #ifndef THING_H
 #define THING_H
 
@@ -8,6 +9,7 @@
 #define MAX_EDGES_PER_NODE 32
 #define MAX_STICKY_NOTES 256
 #define MAX_POPUPS 4
+#define MAX_THINGS 32000
 
 enum ThingType {
     THING_NODE,
@@ -32,32 +34,30 @@ struct Thing {
     bool is_active;
     bool is_selected;
     union {
-        struct { // Node
+        struct {
             POINT pos;
             COLORREF color;
             char text[MAX_TEXT_LENGTH];
-            int output_ports[MAX_OUTPUT_PORTS];
             int output_port_count;
+            int output_ports[MAX_OUTPUT_PORTS];
             int input_edge;
         } node;
-        struct { // Edge
+        struct {
             int from_node;
             int from_port;
             int to_node;
-            POINT control_points[4];
             bool has_control_point_overrides;
+            POINT control_points[2];
         } edge;
-        struct { // Sticky Note
+        struct {
             POINT pos;
             SIZE size;
             char text[MAX_TEXT_LENGTH];
         } sticky_note;
-        struct { // Popup Menu
+        struct {
             POINT pos;
             int target_thing;
         } popup_menu;
-        // Add other Thing types as needed
     } data;
 };
-
 #endif

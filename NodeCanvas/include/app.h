@@ -3,25 +3,22 @@
 
 #include <windows.h>
 #include "thing.h"
+#include "canvas.h"
+#include "ui.h"
+#include "fileio.h"
 
-// Forward declarations to avoid circular dependencies
-class Canvas;
-class UI;
-class FileIO;
-
-#define MAX_THINGS 32000
 #define MAX_UNDO 32
 
 struct App {
     HWND hwnd;
-    Canvas* canvas; // Use pointer to break circular dependency
+    Canvas* canvas;
     UI* ui;
     FileIO* fileio;
-    Thing* things; // Will be allocated as an array
+    Thing* things;
     int thing_count;
     int selected_thing;
     struct Undo {
-        Thing* things; // Will be allocated as an array
+        Thing* things;
         int thing_count;
     } undo_stack[MAX_UNDO];
     int undo_index;
@@ -31,11 +28,8 @@ struct App {
     void Init(HWND hwnd);
     void Update();
     void SaveUndo();
+    void Undo();
+    void Redo();
 };
-
-// Include dependent headers after App definition
-#include "canvas.h"
-#include "ui.h"
-#include "fileio.h"
 
 #endif
