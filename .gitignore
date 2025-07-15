@@ -1,0 +1,60 @@
+# Build output
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.exp
+*.log
+*.pch
+*.bsc
+*.sbr
+*.tlh
+*.tli
+*.tmp
+*.bak
+*.cache
+*.ipch
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.tlog
+*.lastbuildstate
+*.idb
+
+# Visual Studio folders
+[Bb]in/
+[Oo]bj/
+ipch/
+Debug/
+Release/
+x64/
+x86/
+ARM/
+ARM64/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# CMake (if used)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Backup and temp
+*.~*
+*.swp
+*.swo
+*.tmp
+*.log
+
+# NodeCanvas-specific
+data/example.nodec
