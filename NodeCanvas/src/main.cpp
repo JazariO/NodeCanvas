@@ -49,7 +49,15 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
         EndPaint(hwnd, &ps);
         return 0;
     }
+    case WM_KEYDOWN:
+        // Handle keyboard input through canvas
+        if (app.canvas->HandleInput(uMsg, wParam, lParam, &app)) {
+            return 0;
+        }
+        break;
     }
+
+    // Handle all other input through canvas
     return app.canvas->HandleInput(uMsg, wParam, lParam, &app) ?
         0 : DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
@@ -89,7 +97,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     while (GetMessage(&msg, nullptr, 0, 0)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
-        // Removed app.Update() - only update when needed via InvalidateRect
     }
 
     return 0;

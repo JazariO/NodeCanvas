@@ -36,14 +36,14 @@ POINT Canvas::CanvasToScreen(POINT canvas_pos) {
     return screen_pos;
 }
 
-// Add these methods to canvas.cpp
-
 bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
     switch (uMsg) {
     case WM_LBUTTONDOWN: {
         POINT cursor_pos = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
         POINT canvas_pos = ScreenToCanvas(cursor_pos);
         bool ctrl_pressed = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
+
+        int clicked_thing = -1;
 
         // Check if clicking on a node
         for (int i = 0; i < app->thing_count; i++) {
@@ -56,67 +56,62 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
                 };
 
                 if (PtInRect(&node_rect, canvas_pos)) {
-                    app->SaveUndo();
-
-                    // Multi-selection logic: only clear if Ctrl is not pressed
-                    if (!ctrl_pressed) {
-                        for (int j = 0; j < app->thing_count; j++) {
-                            app->things[j].is_selected = false;
-                        }
-                    }
-
-                    // Toggle selection if Ctrl is pressed, otherwise just select
-                    if (ctrl_pressed) {
-                        app->things[i].is_selected = !app->things[i].is_selected;
-                    }
-                    else {
-                        app->things[i].is_selected = true;
-                    }
-
-                    app->selected_thing = i;
-                    is_dragging = true;
-                    drag_thing = i;
-                    drag_start = canvas_pos;
-                    return true;
+                    clicked_thing = i;
+                    break;
                 }
             }
         }
 
-        // Check if clicking on a sticky note
-        for (int i = 0; i < app->thing_count; i++) {
-            if (app->things[i].type == THING_STICKY_NOTE && app->things[i].is_active) {
-                RECT note_rect = {
-                    app->things[i].data.sticky_note.pos.x,
-                    app->things[i].data.sticky_note.pos.y,
-                    app->things[i].data.sticky_note.pos.x + app->things[i].data.sticky_note.size.cx,
-                    app->things[i].data.sticky_note.pos.y + app->things[i].data.sticky_note.size.cy
-                };
+        // If no node clicked, check sticky notes
+        if (clicked_thing == -1) {
+            for (int i = 0; i < app->thing_count; i++) {
+                if (app->things[i].type == THING_STICKY_NOTE && app->things[i].is_active) {
+                    RECT note_rect = {
+                        app->things[i].data.sticky_note.pos.x,
+                        app->things[i].data.sticky_note.pos.y,
+                        app->things[i].data.sticky_note.pos.x + app->things[i].data.sticky_note.size.cx,
+                        app->things[i].data.sticky_note.pos.y + app->things[i].data.sticky_note.size.cy
+                    };
 
-                if (PtInRect(&note_rect, canvas_pos)) {
-                    app->SaveUndo();
-
-                    // Multi-selection logic: only clear if Ctrl is not pressed
-                    if (!ctrl_pressed) {
-                        for (int j = 0; j < app->thing_count; j++) {
-                            app->things[j].is_selected = false;
-                        }
+                    if (PtInRect(&note_rect, canvas_pos)) {
+                        clicked_thing = i;
+                        break;
                     }
-
-                    // Toggle selection if Ctrl is pressed, otherwise just select
-                    if (ctrl_pressed) {
-                        app->things[i].is_selected = !app->things[i].is_selected;
-                    }
-                    else {
-                        app->things[i].is_selected = true;
-                    }
-
-                    app->selected_thing = i;
-                    is_dragging = true;
-                    drag_thing = i;
-                    drag_start = canvas_pos;
-                    return true;
                 }
             }
+        }
+
+        if (clicked_thing != -1) {
+            app->SaveUndo();
+
+            // Handle selection logic
+            if (ctrl_pressed) {
+                // Toggle selection of clicked item
+                app->things[clicked_thing].is_selected = !app->things[clicked_thing].is_selected;
+            }
+            else {
+                // If the clicked item is already selected and we have multiple selections,
+                // don't change selection yet (allow dragging of group)
+                bool item_already_selected = app->things[clicked_thing].is_selected;
+                int selected_count = 0;
+                for (int j = 0; j < app->thing_count; j++) {
+                    if (app->things[j].is_selected) selected_count++;
+                }
+
+                if (!item_already_selected || selected_count <= 1) {
+                    // Clear all selections and select only the clicked item
+                    for (int j = 0; j < app->thing_count; j++) {
+                        app->things[j].is_selected = false;
+                    }
+                    app->things[clicked_thing].is_selected = true;
+                }
+            }
+
+            app->selected_thing = clicked_thing;
+            is_dragging = true;
+            drag_thing = clicked_thing;
+            drag_start = canvas_pos;
+            return true;
         }
 
         // If we didn't click on anything and Ctrl is not pressed, clear selections
@@ -135,7 +130,6 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
 
     case WM_RBUTTONDOWN: {
         POINT cursor_pos = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
-        // Cache the cursor position for spawning nodes/sticky notes
         cached_cursor_pos = cursor_pos;
         app->ui->ShowContextMenu(cursor_pos, app);
         return true;
@@ -166,9 +160,9 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
         if (is_dragging && drag_thing >= 0) {
             POINT delta = { canvas_pos.x - drag_start.x, canvas_pos.y - drag_start.y };
 
-            // Move all selected items, not just the dragged one
+            // Move all selected items together
             for (int i = 0; i < app->thing_count; i++) {
-                if (app->things[i].is_selected) {
+                if (app->things[i].is_selected && app->things[i].is_active) {
                     if (app->things[i].type == THING_NODE) {
                         app->things[i].data.node.pos.x += delta.x;
                         app->things[i].data.node.pos.y += delta.y;
@@ -241,7 +235,7 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
             is_selecting = false;
             bool ctrl_pressed = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
 
-            // Select all things within the selection rectangle
+            // Normalize selection rectangle
             RECT normalized_rect = select_rect;
             if (normalized_rect.left > normalized_rect.right) {
                 int temp = normalized_rect.left;
@@ -261,27 +255,25 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
                 }
             }
 
-            // Select items in the rectangle
+            // Select items within the rectangle
             for (int i = 0; i < app->thing_count; i++) {
-                if (app->things[i].type == THING_NODE && app->things[i].is_active) {
-                    POINT pos = app->things[i].data.node.pos;
-                    if (pos.x >= normalized_rect.left && pos.x <= normalized_rect.right &&
-                        pos.y >= normalized_rect.top && pos.y <= normalized_rect.bottom) {
-                        if (ctrl_pressed) {
-                            // Toggle selection
-                            app->things[i].is_selected = !app->things[i].is_selected;
-                        }
-                        else {
-                            app->things[i].is_selected = true;
-                        }
+                if (app->things[i].is_active) {
+                    bool in_selection = false;
+                    POINT pos = { 0, 0 };
+
+                    if (app->things[i].type == THING_NODE) {
+                        pos = app->things[i].data.node.pos;
+                        in_selection = (pos.x >= normalized_rect.left && pos.x <= normalized_rect.right &&
+                            pos.y >= normalized_rect.top && pos.y <= normalized_rect.bottom);
                     }
-                }
-                else if (app->things[i].type == THING_STICKY_NOTE && app->things[i].is_active) {
-                    POINT pos = app->things[i].data.sticky_note.pos;
-                    if (pos.x >= normalized_rect.left && pos.x <= normalized_rect.right &&
-                        pos.y >= normalized_rect.top && pos.y <= normalized_rect.bottom) {
+                    else if (app->things[i].type == THING_STICKY_NOTE) {
+                        pos = app->things[i].data.sticky_note.pos;
+                        in_selection = (pos.x >= normalized_rect.left && pos.x <= normalized_rect.right &&
+                            pos.y >= normalized_rect.top && pos.y <= normalized_rect.bottom);
+                    }
+
+                    if (in_selection) {
                         if (ctrl_pressed) {
-                            // Toggle selection
                             app->things[i].is_selected = !app->things[i].is_selected;
                         }
                         else {
@@ -297,6 +289,34 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
 
         return false;
     }
+
+    case WM_KEYDOWN: {
+        if (wParam == VK_DELETE) {
+            // Delete all selected items
+            app->SaveUndo();
+            for (int i = 0; i < app->thing_count; i++) {
+                if (app->things[i].is_selected) {
+                    app->things[i].is_active = false;
+                    app->things[i].is_selected = false;
+                }
+            }
+            app->unsaved_changes = true;
+            InvalidateRect(app->hwnd, nullptr, TRUE);
+            return true;
+        }
+        else if (wParam == 'A' && (GetKeyState(VK_CONTROL) & 0x8000)) {
+            // Select all (Ctrl+A)
+            for (int i = 0; i < app->thing_count; i++) {
+                if (app->things[i].is_active &&
+                    (app->things[i].type == THING_NODE || app->things[i].type == THING_STICKY_NOTE)) {
+                    app->things[i].is_selected = true;
+                }
+            }
+            InvalidateRect(app->hwnd, nullptr, TRUE);
+            return true;
+        }
+        return false;
+    }
     }
 
     return false;
@@ -307,7 +327,6 @@ void Canvas::AddNode(App* app, POINT pos) {
 
     app->SaveUndo();
 
-    // Use the cached cursor position instead of the passed pos
     POINT canvas_pos = ScreenToCanvas(cached_cursor_pos);
 
     Thing* thing = &app->things[app->thing_count];
@@ -326,13 +345,11 @@ void Canvas::AddNode(App* app, POINT pos) {
     InvalidateRect(app->hwnd, nullptr, TRUE);
 }
 
-// Update the AddStickyNote method to use cached cursor position:
 void Canvas::AddStickyNote(App* app, POINT pos) {
     if (app->thing_count >= MAX_THINGS) return;
 
     app->SaveUndo();
 
-    // Use the cached cursor position instead of the passed pos
     POINT canvas_pos = ScreenToCanvas(cached_cursor_pos);
 
     Thing* thing = &app->things[app->thing_count];

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\canvas.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\render.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\render.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -62,11 +62,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ui.cpp",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp",
               "RelativeDocumentMoniker": "NodeCanvas\\src\\ui.cpp",
@@ -85,7 +85,7 @@
               "RelativeDocumentMoniker": "NodeCanvas\\src\\canvas.cpp",
               "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp",
               "RelativeToolTip": "NodeCanvas\\src\\canvas.cpp",
-              "ViewState": "AgIAABYAAAAAAAAAAAAUwBUAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAOoBAAAAAAAAAAAmwBICAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T02:43:02.856Z",
               "EditorCaption": ""
@@ -105,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "render.cpp",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\render.cpp",
               "RelativeDocumentMoniker": "NodeCanvas\\src\\render.cpp",
@@ -157,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "render.h",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\render.h",
               "RelativeDocumentMoniker": "NodeCanvas\\include\\render.h",
@@ -183,7 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "canvas.h",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\canvas.h",
               "RelativeDocumentMoniker": "NodeCanvas\\include\\canvas.h",
@@ -222,13 +222,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp",
               "RelativeDocumentMoniker": "NodeCanvas\\src\\main.cpp",
               "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp",
               "RelativeToolTip": "NodeCanvas\\src\\main.cpp",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAmwF8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAmwGAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T02:37:35.576Z",
               "EditorCaption": ""
