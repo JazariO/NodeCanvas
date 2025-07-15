@@ -33,29 +33,48 @@ void App::Update() {
 
 void App::SaveUndo() {
     if (undo_count >= MAX_UNDO) return;
+
+    // Clear any future undo states when we save a new one
+    undo_count = undo_index + 1;
+
     undo_stack[undo_index].thing_count = thing_count;
     memcpy(undo_stack[undo_index].things, things, sizeof(Thing) * thing_count);
     undo_index = (undo_index + 1) % MAX_UNDO;
-    undo_count = (std::min)(undo_count + 1, MAX_UNDO);
+
+    // Only increment count if we haven't reached max
+    if (undo_count < MAX_UNDO) {
+        undo_count++;
+    }
+
     unsaved_changes = true;
 }
 
 void App::Undo() {
-    if (undo_count <= 0) return;
+    if (undo_count <= 1) return; // Need at least one state to undo to
+
+    // Move back one step
     undo_index = (undo_index - 1 + MAX_UNDO) % MAX_UNDO;
-    undo_count--;
+
+    // Load the previous state
     thing_count = undo_stack[undo_index].thing_count;
     memcpy(things, undo_stack[undo_index].things, sizeof(Thing) * thing_count);
+
     unsaved_changes = true;
     InvalidateRect(hwnd, nullptr, TRUE);
 }
 
 void App::Redo() {
-    if (undo_index >= undo_count - 1) return;
-    undo_index = (undo_index + 1) % MAX_UNDO;
-    undo_count++;
+    // Check if we can redo (there's a state ahead of us)
+    int next_index = (undo_index + 1) % MAX_UNDO;
+    if (next_index >= undo_count) return;
+
+    // Move forward one step
+    undo_index = next_index;
+
+    // Load the next state
     thing_count = undo_stack[undo_index].thing_count;
     memcpy(things, undo_stack[undo_index].things, sizeof(Thing) * thing_count);
+
     unsaved_changes = true;
     InvalidateRect(hwnd, nullptr, TRUE);
 }

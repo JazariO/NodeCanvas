@@ -53,21 +53,40 @@ void FileIO::Load(App* app) {
     ofn.lpstrFilter = L"NodeCanvas Files (*.nodec)\0*.nodec\0All Files (*.*)\0*.*\0";
     ofn.lpstrFile = filename;
     ofn.nMaxFile = MAX_PATH;
-    ofn.Flags = OFN_FILEMUSTEXIST;
+    ofn.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST;
 
     if (GetOpenFileNameW(&ofn)) {
         FILE* file;
         if (_wfopen_s(&file, filename, L"rb") == 0) {
+            // Save current state before loading
             app->SaveUndo();
-            fread(&app->thing_count, sizeof(int), 1, file);
-            if (app->thing_count <= MAX_THINGS) {
-                fread(app->things, sizeof(Thing), app->thing_count, file);
+
+            int loaded_count;
+            if (fread(&loaded_count, sizeof(int), 1, file) == 1) {
+                if (loaded_count > 0 && loaded_count <= MAX_THINGS) {
+                    // Clear existing things
+                    for (int i = 0; i < app->thing_count; i++) {
+                        app->things[i].is_active = false;
+                    }
+
+                    // Load new things
+                    if (fread(app->things, sizeof(Thing), loaded_count, file) == loaded_count) {
+                        app->thing_count = loaded_count;
+                        has_file = true;
+                        wcscpy_s(current_file, MAX_PATH, filename);
+                        app->unsaved_changes = false;
+
+                        // Focus on loaded content
+                        app->canvas->FocusAll(app);
+
+                        InvalidateRect(app->hwnd, nullptr, TRUE);
+                    }
+                }
             }
             fclose(file);
-            has_file = true;
-            wcscpy_s(current_file, MAX_PATH, filename);
-            app->unsaved_changes = false;
-            InvalidateRect(app->hwnd, nullptr, TRUE);
+        }
+        else {
+            MessageBoxW(app->hwnd, L"Failed to open file", L"Error", MB_OK | MB_ICONERROR);
         }
     }
 }
