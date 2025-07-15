@@ -58,3 +58,5 @@ Makefile
 
 # NodeCanvas-specific
 data/example.nodec
+
+.vs/
