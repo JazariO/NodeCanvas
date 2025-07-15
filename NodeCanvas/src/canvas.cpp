@@ -389,12 +389,15 @@ void Canvas::AddEdge(App* app, int from_node, int from_port, int to_node) {
 void Canvas::FocusAll(App* app) {
     if (app->thing_count == 0) return;
 
-    // Find bounding box of all active things
+    // Find bounding box of all active things (excluding canvas background)
     RECT bounding_box = { INT_MAX, INT_MAX, INT_MIN, INT_MIN };
     bool found_any = false;
 
     for (int i = 0; i < app->thing_count; i++) {
         if (!app->things[i].is_active) continue;
+
+        // Skip canvas background - we don't want to focus on it
+        if (app->things[i].type == THING_CANVAS_BACKGROUND) continue;
 
         RECT thing_rect = { 0, 0, 0, 0 };
 
@@ -430,28 +433,43 @@ void Canvas::FocusAll(App* app) {
         }
     }
 
-    if (!found_any) return;
+    if (!found_any) {
+        // If no focusable content found, reset to default view
+        zoom = 1.0f;
+        pan = { 0, 0 };
+        InvalidateRect(app->hwnd, nullptr, TRUE);
+        return;
+    }
 
-    // Calculate zoom to fit all things
+    // Calculate zoom to fit all things with some padding
     int content_width = bounding_box.right - bounding_box.left;
     int content_height = bounding_box.bottom - bounding_box.top;
     int canvas_width = bounds.right - bounds.left;
     int canvas_height = bounds.bottom - bounds.top;
 
-    float zoom_x = (float)canvas_width / (content_width + 100);
-    float zoom_y = (float)canvas_height / (content_height + 100);
+    // Add padding to prevent things from being right at the edge
+    int padding = 100;
+
+    // Avoid division by zero
+    if (content_width <= 0) content_width = 100;
+    if (content_height <= 0) content_height = 100;
+    if (canvas_width <= 0) canvas_width = 800;
+    if (canvas_height <= 0) canvas_height = 600;
+
+    float zoom_x = (float)(canvas_width - padding * 2) / content_width;
+    float zoom_y = (float)(canvas_height - padding * 2) / content_height;
     zoom = std::min(zoom_x, zoom_y);
 
-    // Clamp zoom
+    // Clamp zoom to reasonable bounds
     if (zoom < 0.1f) zoom = 0.1f;
     if (zoom > 5.0f) zoom = 5.0f;
 
-    // Center the content
+    // Center the content in the canvas
     int center_x = (bounding_box.left + bounding_box.right) / 2;
     int center_y = (bounding_box.top + bounding_box.bottom) / 2;
 
-    pan.x = canvas_width / 2 - center_x * zoom;
-    pan.y = canvas_height / 2 - center_y * zoom;
+    pan.x = (canvas_width / 2) - (center_x * zoom);
+    pan.y = (canvas_height / 2) - (center_y * zoom);
 
     InvalidateRect(app->hwnd, nullptr, TRUE);
 }

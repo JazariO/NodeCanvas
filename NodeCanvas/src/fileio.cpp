@@ -76,8 +76,12 @@ void FileIO::Load(App* app) {
                         wcscpy_s(current_file, MAX_PATH, filename);
                         app->unsaved_changes = false;
 
-                        // Focus on loaded content
-                        app->canvas->FocusAll(app);
+                        // Reset canvas view to default instead of auto-focusing
+                        app->canvas->zoom = 1.0f;
+                        app->canvas->pan = { 0, 0 };
+
+                        // Optional: Focus on loaded content (comment out if causing issues)
+                        // app->canvas->FocusAll(app);
 
                         InvalidateRect(app->hwnd, nullptr, TRUE);
                     }
