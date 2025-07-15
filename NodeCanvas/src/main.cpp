@@ -1,25 +1,37 @@
 #include <windows.h>
 #include "../include/app.h"
 
+App app; // Global application instance
+
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
     case WM_DESTROY:
+        // Clean up dynamically allocated memory
+        for (int i = 0; i < MAX_UNDO; i++) {
+            delete[] app.undo_stack[i].things;
+        }
+        delete[] app.things;
+        delete app.fileio;
+        delete app.ui;
+        delete app.canvas;
         PostQuitMessage(0);
         return 0;
     case WM_CLOSE:
-        // TODO: Prompt for unsaved changes (fileio.cpp)
-        DestroyWindow(hwnd);
+        if (app.fileio->PromptSaveUnsaved(hwnd, &app)) {
+            DestroyWindow(hwnd);
+        }
         return 0;
     case WM_PAINT: {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hwnd, &ps);
-        // TODO: Call render.cpp to draw canvas
-        FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
+        app.canvas->Render(hdc, &app);
+        app.ui->Render(hdc, &app);
         EndPaint(hwnd, &ps);
         return 0;
     }
     }
-    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+    return app.canvas->HandleInput(uMsg, wParam, lParam, &app) ?
+        0 : DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -53,14 +65,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     ShowWindow(hwnd, nCmdShow);
 
-    // Initialize application (app.cpp)
-    // TODO: Call App::Init() from app.h
+    // Initialize application
+    app.Init(hwnd);
 
     // Main message loop
     MSG msg = {};
     while (GetMessage(&msg, nullptr, 0, 0)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
+        app.Update();
     }
 
     return 0;

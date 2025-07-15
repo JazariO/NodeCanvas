@@ -3,68 +3,56 @@
   "WorkspaceRootPath": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\thing.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\thing.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\thing.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:thing.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\app.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:app.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\app.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\app.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\text_thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:text_thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\fileio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\fileio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\test_canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:test_canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\ui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\ui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\example.nodec||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:example.nodec||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\canvas.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\canvas.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\render.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:render.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\app.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\app.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\fileio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:fileio.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\ui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:ui.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\fileio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\fileio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\canvas.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:canvas.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\render.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:render.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\render.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\render.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\fileio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:fileio.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:thing.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\app.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:app.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\render.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\include\\render.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,204 +62,180 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 10,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "text_thing.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\text_thing.cpp",
-              "RelativeDocumentMoniker": "text_thing.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\text_thing.cpp",
-              "RelativeToolTip": "text_thing.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "fileio.cpp",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\fileio.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\fileio.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\fileio.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\fileio.cpp",
+              "ViewState": "AgIAACcAAAAAAAAAAAAmwEgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:32:15.71Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "test_canvas.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\test_canvas.cpp",
-              "RelativeDocumentMoniker": "test_canvas.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\test_canvas.cpp",
-              "RelativeToolTip": "test_canvas.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:32:08.774Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "example.nodec",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\example.nodec",
-              "RelativeDocumentMoniker": "example.nodec",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\example.nodec",
-              "RelativeToolTip": "example.nodec",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-07-15T01:31:36.956Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "render.h",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\render.h",
-              "RelativeDocumentMoniker": "render.h",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\render.h",
-              "RelativeToolTip": "render.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T01:30:40.283Z"
+              "WhenOpened": "2025-07-15T03:11:27.329Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "fileio.h",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\fileio.h",
-              "RelativeDocumentMoniker": "fileio.h",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\fileio.h",
-              "RelativeToolTip": "fileio.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T01:30:34.326Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ui.h",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\ui.h",
-              "RelativeDocumentMoniker": "ui.h",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\ui.h",
-              "RelativeToolTip": "ui.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T01:30:28.075Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "thing.h",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\thing.h",
-              "RelativeDocumentMoniker": "thing.h",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\thing.h",
-              "RelativeToolTip": "thing.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T01:30:22.574Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "canvas.h",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\canvas.h",
-              "RelativeDocumentMoniker": "canvas.h",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\canvas.h",
-              "RelativeToolTip": "canvas.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T01:30:12.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "app.h",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\app.h",
-              "RelativeDocumentMoniker": "app.h",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\app.h",
-              "RelativeToolTip": "app.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T01:29:36.289Z"
+              "Title": "ui.cpp",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\ui.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\ui.cpp",
+              "ViewState": "AgIAABEAAAAAAAAAAAAmwDIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-15T03:05:32.518Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "render.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\render.cpp",
-              "RelativeDocumentMoniker": "render.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\render.cpp",
-              "RelativeToolTip": "render.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\render.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\render.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\render.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\render.cpp",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAmwCkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:55.833Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "fileio.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\fileio.cpp",
-              "RelativeDocumentMoniker": "fileio.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\fileio.cpp",
-              "RelativeToolTip": "fileio.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:50.3Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ui.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\ui.cpp",
-              "RelativeDocumentMoniker": "ui.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\ui.cpp",
-              "RelativeToolTip": "ui.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:45.107Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "thing.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\thing.cpp",
-              "RelativeDocumentMoniker": "thing.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\thing.cpp",
-              "RelativeToolTip": "thing.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:39.698Z"
+              "WhenOpened": "2025-07-15T03:05:19.281Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "canvas.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\canvas.cpp",
-              "RelativeDocumentMoniker": "canvas.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\canvas.cpp",
-              "RelativeToolTip": "canvas.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "thing.cpp",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\thing.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\thing.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\thing.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\thing.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:33.256Z"
+              "WhenOpened": "2025-07-15T02:43:23.343Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "app.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\app.cpp",
-              "RelativeDocumentMoniker": "app.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\app.cpp",
-              "RelativeToolTip": "app.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "canvas.cpp",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\canvas.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\canvas.cpp",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAmwK8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:22.213Z"
+              "WhenOpened": "2025-07-15T02:43:02.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "app.cpp",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\app.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\app.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\app.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\app.cpp",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAmwCwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-15T02:42:57.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ui.h",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\ui.h",
+              "RelativeDocumentMoniker": "NodeCanvas\\include\\ui.h",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\ui.h",
+              "RelativeToolTip": "NodeCanvas\\include\\ui.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T02:38:55.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "render.h",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\render.h",
+              "RelativeDocumentMoniker": "NodeCanvas\\include\\render.h",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\render.h",
+              "RelativeToolTip": "NodeCanvas\\include\\render.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T02:38:48.937Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "fileio.h",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\fileio.h",
+              "RelativeDocumentMoniker": "NodeCanvas\\include\\fileio.h",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\fileio.h",
+              "RelativeToolTip": "NodeCanvas\\include\\fileio.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T02:38:44.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "canvas.h",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\canvas.h",
+              "RelativeDocumentMoniker": "NodeCanvas\\include\\canvas.h",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\canvas.h",
+              "RelativeToolTip": "NodeCanvas\\include\\canvas.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T02:38:38.576Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\main.cpp",
-              "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-15T01:28:01.981Z",
+              "Title": "thing.h",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\thing.h",
+              "RelativeDocumentMoniker": "NodeCanvas\\include\\thing.h",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\thing.h",
+              "RelativeToolTip": "NodeCanvas\\include\\thing.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T02:38:22.874Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "app.h",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\app.h",
+              "RelativeDocumentMoniker": "NodeCanvas\\include\\app.h",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\app.h",
+              "RelativeToolTip": "NodeCanvas\\include\\app.h",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-15T02:38:03.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp",
+              "RelativeDocumentMoniker": "NodeCanvas\\src\\main.cpp",
+              "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp",
+              "RelativeToolTip": "NodeCanvas\\src\\main.cpp",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAmwE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-15T02:37:35.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         },

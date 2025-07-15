@@ -39,56 +39,56 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="NodeCanvas\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="app.cpp">
+    <ClCompile Include="NodeCanvas\src\app.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="canvas.cpp">
+    <ClCompile Include="NodeCanvas\src\canvas.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="thing.cpp">
+    <ClCompile Include="NodeCanvas\src\thing.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="ui.cpp">
+    <ClCompile Include="NodeCanvas\src\ui.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="fileio.cpp">
+    <ClCompile Include="NodeCanvas\src\fileio.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="render.cpp">
+    <ClCompile Include="NodeCanvas\src\render.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="test_canvas.cpp">
+    <ClCompile Include="NodeCanvas\tests\test_canvas.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="text_thing.cpp">
+    <ClCompile Include="NodeCanvas\tests\text_thing.cpp">
       <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="app.h">
+    <ClInclude Include="NodeCanvas\include\app.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="canvas.h">
+    <ClInclude Include="NodeCanvas\include\canvas.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="thing.h">
+    <ClInclude Include="NodeCanvas\include\thing.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="ui.h">
+    <ClInclude Include="NodeCanvas\include\ui.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="fileio.h">
+    <ClInclude Include="NodeCanvas\include\fileio.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="render.h">
+    <ClInclude Include="NodeCanvas\include\render.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="example.nodec">
+    <None Include="NodeCanvas\data\example.nodec">
       <Filter>data</Filter>
     </None>
   </ItemGroup>
