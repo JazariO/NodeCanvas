@@ -1,26 +1,12 @@
-﻿  canvas.cpp
+﻿  main.cpp
 C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\fileio.h(7,8): warning C4099: 'App': type name first seen using 'class' now seen using 'struct'
-  (compiling source file 'NodeCanvas/src/canvas.cpp')
+  (compiling source file 'NodeCanvas/src/main.cpp')
       C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\canvas.h(7,7):
       see declaration of 'App'
   
 C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\app.h(12,8): warning C4099: 'App': type name first seen using 'class' now seen using 'struct'
-  (compiling source file 'NodeCanvas/src/canvas.cpp')
+  (compiling source file 'NodeCanvas/src/main.cpp')
       C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\app.h(12,8):
       see declaration of 'App'
   
-C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\src\canvas.cpp(471,32): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\src\canvas.cpp(472,33): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-  fileio.cpp
-C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\canvas.h(7,7): warning C4099: 'App': type name first seen using 'struct' now seen using 'class'
-  (compiling source file 'NodeCanvas/src/fileio.cpp')
-      C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\fileio.h(7,8):
-      see declaration of 'App'
-  
-C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\ui.h(7,7): warning C4099: 'App': type name first seen using 'struct' now seen using 'class'
-  (compiling source file 'NodeCanvas/src/fileio.cpp')
-      C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\NodeCanvas\include\fileio.h(7,8):
-      see declaration of 'App'
-  
-  Generating Code...
   NodeCanvas.vcxproj -> C:\Projects\DelaysExpected\ProgramProjects\NodeCanvas\x64\Debug\NodeCanvas.exe

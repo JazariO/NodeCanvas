@@ -63,7 +63,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
                 app.thing_count = 1; // Keep only canvas background
                 app.fileio->has_file = false;
                 app.unsaved_changes = false;
-                InvalidateRect(hwnd, nullptr, TRUE);
+                InvalidateRect(hwnd, nullptr, FALSE); // Don't erase background
             }
             break;
         case ID_FILE_OPEN:
@@ -94,7 +94,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
                     app.things[i].is_selected = true;
                 }
             }
-            InvalidateRect(hwnd, nullptr, TRUE);
+            InvalidateRect(hwnd, nullptr, FALSE); // Don't erase background
             break;
         case ID_VIEW_FOCUSALL:
             app.canvas->FocusAll(&app);
@@ -123,8 +123,12 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
     case WM_SIZE:
         // Update canvas bounds when window is resized
         GetClientRect(hwnd, &app.canvas->bounds);
-        InvalidateRect(hwnd, nullptr, TRUE);
+        InvalidateRect(hwnd, nullptr, FALSE); // Don't erase background
         return 0;
+
+    case WM_ERASEBKGND:
+        // Prevent default background erasing to reduce flicker
+        return 1;
 
     case WM_PAINT: {
         PAINTSTRUCT ps;
@@ -137,7 +141,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
         HBITMAP mem_bitmap = CreateCompatibleBitmap(hdc, client_rect.right, client_rect.bottom);
         HBITMAP old_bitmap = (HBITMAP)SelectObject(mem_dc, mem_bitmap);
 
-        // Clear background
+        // Clear background manually since we're handling WM_ERASEBKGND
         HBRUSH bg_brush = CreateSolidBrush(RGB(255, 255, 255));
         FillRect(mem_dc, &client_rect, bg_brush);
         DeleteObject(bg_brush);
@@ -210,7 +214,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     wc.hInstance = hInstance;
     wc.lpszClassName = CLASS_NAME;
     wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    // Remove automatic background brush - we'll handle it manually
+    wc.hbrBackground = nullptr;
     RegisterClass(&wc);
 
     HWND hwnd = CreateWindowEx(
