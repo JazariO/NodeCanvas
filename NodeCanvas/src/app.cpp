@@ -40,6 +40,6 @@ void App::SaveUndo() {
     undo_stack[undo_index].thing_count = thing_count;
     memcpy(undo_stack[undo_index].things, things, sizeof(Thing) * thing_count);
     undo_index = (undo_index + 1) % MAX_UNDO;
-    undo_count = std::min(undo_count + 1, MAX_UNDO);
+    undo_count = (std::min)(undo_count + 1, MAX_UNDO);
     unsaved_changes = true;
 }

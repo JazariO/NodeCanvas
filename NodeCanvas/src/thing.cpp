@@ -9,7 +9,7 @@ namespace NodeCanvasRender {
             thing->data.sticky_note.pos.x,
             thing->data.sticky_note.pos.y,
             thing->data.sticky_note.pos.x + thing->data.sticky_note.size.cx,
-            thing->data.sticky_note.pos.y + thing->data.sticky_note.pos.y + thing->data.sticky_note.size.cy
+            thing->data.sticky_note.pos.y + thing->data.sticky_note.size.cy
         };
         HBRUSH brush = CreateSolidBrush(RGB(255, 255, 200)); // Yellow background
         FillRect(hdc, &rect, brush);

@@ -1,5 +1,5 @@
 #include "../include/fileio.h"
-#include "../include/thing.h"
+#include "../include/app.h"
 #include <commdlg.h>
 #include <stdio.h>
 

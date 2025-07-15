@@ -7,7 +7,8 @@
 struct App;
 struct Thing;
 
-struct Canvas {
+class Canvas {
+public:
     float zoom;
     POINT pan;
     bool is_dragging;

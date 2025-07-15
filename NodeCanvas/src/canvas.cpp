@@ -31,7 +31,7 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
     switch (uMsg) {
     case WM_RBUTTONDOWN: {
         POINT pos = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
-        app->ui.ShowContextMenu(pos, app);
+        app->ui->ShowContextMenu(pos, app);
         return true;
     }
     case WM_LBUTTONDOWN: {
@@ -83,7 +83,7 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
             return true;
         }
         if (wParam == VK_ESCAPE) {
-            app->ui.is_text_editing = false;
+            app->ui->is_text_editing = false;
             InvalidateRect(app->hwnd, nullptr, TRUE);
             return true;
         }

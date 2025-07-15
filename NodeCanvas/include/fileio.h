@@ -6,7 +6,8 @@
 // Forward declaration
 struct App;
 
-struct FileIO {
+class FileIO {
+public:
     bool has_file;
     wchar_t current_file[MAX_PATH];
 

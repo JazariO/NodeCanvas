@@ -2,12 +2,12 @@
 #define APP_H
 
 #include <windows.h>
+#include "thing.h"
 
 // Forward declarations to avoid circular dependencies
-struct Canvas;
-struct UI;
-struct FileIO;
-struct Thing;
+class Canvas;
+class UI;
+class FileIO;
 
 #define MAX_THINGS 32000
 #define MAX_UNDO 32
@@ -37,6 +37,5 @@ struct App {
 #include "canvas.h"
 #include "ui.h"
 #include "fileio.h"
-#include "thing.h"
 
 #endif

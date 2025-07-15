@@ -6,7 +6,8 @@
 // Forward declaration
 struct App;
 
-struct UI {
+class UI {
+public:
     bool is_text_editing;
     void Init();
     void Render(HDC hdc, App* app);

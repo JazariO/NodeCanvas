@@ -33,17 +33,17 @@ void UI::ShowContextMenu(POINT pos, App* app) {
     int selection = TrackPopupMenu(hMenu, TPM_RETURNCMD | TPM_NONOTIFY, pos.x, pos.y, 0, app->hwnd, nullptr);
     switch (selection) {
     case 1: // Add Node
-        app->canvas.AddNode(app, pos);
+        app->canvas->AddNode(app, pos);
         break;
     case 2: // Add Sticky Note
-        app->canvas.AddStickyNote(app, pos);
+        app->canvas->AddStickyNote(app, pos);
         break;
     case 3: // Save
-        app->fileio.Save(app);
+        app->fileio->Save(app);
         break;
     case 4: // Load
-        if (app->fileio.PromptSaveUnsaved(app->hwnd, app)) {
-            app->fileio.Load(app);
+        if (app->fileio->PromptSaveUnsaved(app->hwnd, app)) {
+            app->fileio->Load(app);
         }
         break;
     }
