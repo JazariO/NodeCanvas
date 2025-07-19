@@ -92,20 +92,24 @@ void UI::EndTextEditing(App* app, bool save_changes) {
         char utf8_text[MAX_TEXT_LENGTH];
         WideCharToMultiByte(CP_UTF8, 0, wtext, -1, utf8_text, MAX_TEXT_LENGTH, nullptr, nullptr);
 
-        std::string text(utf8_text);
-        size_t pos = 0;
-        while ((pos = text.find("\r\n", pos)) != std::string::npos) {
-            text.replace(pos, 2, "\n");
-            pos += 1;
+        int j = 0;
+        for (int i = 0; utf8_text[i] != '\0'; ++i) {
+            if (utf8_text[i] == '\r' && utf8_text[i + 1] == '\n') {
+                utf8_text[j++] = '\n';
+                i++;
+            } else {
+                utf8_text[j++] = utf8_text[i];
+            }
         }
+        utf8_text[j] = '\0';
 
         // Save to thing
         Thing* thing = &app->things[editing_thing];
         if (thing->type == THING_NODE) {
-            strcpy_s(thing->data.node.text, MAX_TEXT_LENGTH, text.c_str());
+            strcpy_s(thing->data.node.text, MAX_TEXT_LENGTH, utf8_text);
         }
         else if (thing->type == THING_STICKY_NOTE) {
-            strcpy_s(thing->data.sticky_note.text, MAX_TEXT_LENGTH, text.c_str());
+            strcpy_s(thing->data.sticky_note.text, MAX_TEXT_LENGTH, utf8_text);
         }
 
         app->unsaved_changes = true;
