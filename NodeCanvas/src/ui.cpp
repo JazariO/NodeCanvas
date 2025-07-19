@@ -61,6 +61,11 @@ void UI::StartTextEditing(int thing_index, App* app) {
     );
 
     if (edit_control) {
+        // Subclass the edit control to handle Enter key properly
+        extern WNDPROC original_edit_proc;
+        extern LRESULT CALLBACK EditControlProc(HWND, UINT, WPARAM, LPARAM);
+        original_edit_proc = (WNDPROC)SetWindowLongPtr(edit_control, GWLP_WNDPROC, (LONG_PTR)EditControlProc);
+
         // Set current text
         const char* current_text = (thing->type == THING_NODE) ?
             thing->data.node.text : thing->data.sticky_note.text;
