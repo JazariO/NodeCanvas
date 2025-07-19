@@ -2,7 +2,6 @@
 #include "../include/app.h"
 
 App app;
-WNDPROC original_edit_proc = nullptr;
 
 // Menu IDs
 #define ID_FILE_NEW     1001
@@ -14,33 +13,6 @@ WNDPROC original_edit_proc = nullptr;
 #define ID_EDIT_REDO    2002
 #define ID_EDIT_SELECTALL 2003
 #define ID_VIEW_FOCUSALL 3001
-
-// Custom edit control window procedure to handle Enter key
-LRESULT CALLBACK EditControlProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    switch (uMsg) {
-    case WM_KEYDOWN:
-        if (wParam == VK_RETURN) {
-            bool shift_pressed = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
-            if (shift_pressed) {
-                // Shift+Enter: Allow new line (default behavior)
-                return CallWindowProc(original_edit_proc, hwnd, uMsg, wParam, lParam);
-            }
-            else {
-                // Enter alone: End text editing
-                app.ui->EndTextEditing(&app, true);
-                return 0;
-            }
-        }
-        else if (wParam == VK_ESCAPE) {
-            // Escape: Cancel text editing
-            app.ui->EndTextEditing(&app, false);
-            return 0;
-        }
-        break;
-    }
-
-    return CallWindowProc(original_edit_proc, hwnd, uMsg, wParam, lParam);
-}
 
 void CreateMenuBar(HWND hwnd) {
     HMENU hMenuBar = CreateMenu();
