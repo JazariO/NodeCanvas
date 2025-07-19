@@ -99,6 +99,13 @@ bool Canvas::HandleInput(UINT uMsg, WPARAM wParam, LPARAM lParam, App* app) {
             }
         }
 
+        // If we're currently text editing and clicked on a different thing (or nothing), end editing
+        if (app->ui->IsTextEditing()) {
+            if (clicked_thing == -1 || clicked_thing != app->ui->editing_thing) {
+                app->ui->EndTextEditing(app, true);
+            }
+        }
+
         if (clicked_thing != -1) {
             // Check for double-click
             if (IsDoubleClick(cursor_pos, current_time, clicked_thing)) {

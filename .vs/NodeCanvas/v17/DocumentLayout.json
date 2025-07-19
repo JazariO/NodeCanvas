@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\canvas.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|solutionrelative:NodeCanvas\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B178993-5FBA-4336-851B-82A2EE6E8AD1}|NodeCanvas.vcxproj|C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -61,8 +61,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 297,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -75,18 +75,17 @@
               "ViewState": "AgIAAC8AAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T02:42:57.388Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "canvas.cpp",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp",
               "RelativeDocumentMoniker": "NodeCanvas\\src\\canvas.cpp",
               "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\canvas.cpp",
               "RelativeToolTip": "NodeCanvas\\src\\canvas.cpp",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAAAIsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T02:43:02.856Z",
               "IsPinned": true,
@@ -103,22 +102,20 @@
               "ViewState": "AgIAAD8AAAAAAAAAAAAAAF8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T03:11:27.329Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp",
               "RelativeDocumentMoniker": "NodeCanvas\\src\\main.cpp",
               "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\main.cpp",
               "RelativeToolTip": "NodeCanvas\\src\\main.cpp",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAAAMEAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAAACsBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T02:37:35.576Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -131,8 +128,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T03:05:19.281Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -145,8 +141,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T02:43:23.343Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -156,11 +151,14 @@
               "RelativeDocumentMoniker": "NodeCanvas\\src\\ui.cpp",
               "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\src\\ui.cpp",
               "RelativeToolTip": "NodeCanvas\\src\\ui.cpp",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAAAHcAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAAAJgAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T03:05:32.518Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -170,10 +168,9 @@
               "RelativeDocumentMoniker": "NodeCanvas\\include\\ui.h",
               "ToolTip": "C:\\Projects\\DelaysExpected\\ProgramProjects\\NodeCanvas\\NodeCanvas\\include\\ui.h",
               "RelativeToolTip": "NodeCanvas\\include\\ui.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:38:55.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T02:38:55.248Z"
             },
             {
               "$type": "Document",
@@ -185,8 +182,7 @@
               "RelativeToolTip": "NodeCanvas\\include\\render.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:38:48.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T02:38:48.937Z"
             },
             {
               "$type": "Document",
@@ -198,8 +194,7 @@
               "RelativeToolTip": "NodeCanvas\\include\\fileio.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:38:44.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T02:38:44.201Z"
             },
             {
               "$type": "Document",
@@ -211,8 +206,7 @@
               "RelativeToolTip": "NodeCanvas\\include\\canvas.h",
               "ViewState": "AgIAAAsAAAAAAAAAAAAmwCAAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:38:38.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T02:38:38.576Z"
             },
             {
               "$type": "Document",
@@ -224,8 +218,7 @@
               "RelativeToolTip": "NodeCanvas\\include\\thing.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:38:22.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-15T02:38:22.874Z"
             },
             {
               "$type": "Document",
@@ -237,12 +230,17 @@
               "RelativeToolTip": "NodeCanvas\\include\\app.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-15T02:38:03.095Z",
-              "EditorCaption": ""
-            },
+              "WhenOpened": "2025-07-15T02:38:03.095Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 144,
+          "SelectedChildIndex": -1,
+          "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         },
@@ -253,10 +251,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

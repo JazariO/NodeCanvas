@@ -42,12 +42,14 @@ void UI::StartTextEditing(int thing_index, App* app) {
         };
     }
 
-    // Create edit control
+    // Create edit control - removed ES_WANTRETURN to prevent default Enter behavior
+    DWORD style = WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL | ES_MULTILINE;
+
     edit_control = CreateWindowExW(
         WS_EX_CLIENTEDGE,
         L"EDIT",
         L"",
-        WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL | ES_MULTILINE | ES_WANTRETURN,
+        style,
         edit_rect.left,
         edit_rect.top,
         edit_rect.right - edit_rect.left,
@@ -59,6 +61,11 @@ void UI::StartTextEditing(int thing_index, App* app) {
     );
 
     if (edit_control) {
+        // Subclass the edit control to handle Enter key properly
+        extern WNDPROC original_edit_proc;
+        extern LRESULT CALLBACK EditControlProc(HWND, UINT, WPARAM, LPARAM);
+        original_edit_proc = (WNDPROC)SetWindowLongPtr(edit_control, GWLP_WNDPROC, (LONG_PTR)EditControlProc);
+
         // Set current text
         const char* current_text = (thing->type == THING_NODE) ?
             thing->data.node.text : thing->data.sticky_note.text;
